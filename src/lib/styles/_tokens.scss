@@ -1,0 +1,67 @@
+:root {
+	font-family: var(--font-ui);
+	color: var(--ink);
+	background: var(--paper);
+	color-scheme: light;
+	font-synthesis: none;
+	--ink: #29242e;
+	--muted: #6d6672;
+	--paper: #f5f2f7;
+	--line: #d1cad7;
+	--signal: #7651a8;
+	--signal-dark: #56357e;
+	--alert: #d65d42;
+	--callout-note: #2563a8;
+	--callout-info: #1672a6;
+	--callout-todo: #3d62ad;
+	--callout-abstract: #087d82;
+	--callout-tip: #087c65;
+	--callout-important: #7651a8;
+	--callout-success: #2f7d46;
+	--callout-question: #8a5a20;
+	--callout-warning: #a85d00;
+	--callout-danger: #bd3f36;
+	--callout-example: #7157a5;
+	--callout-quote: #68736d;
+	--grid: rgba(61, 43, 72, 0.035);
+	--inline-code: #e8e2ec;
+	--code-border: #433a49;
+	--code-frame: #fff;
+	--code-bar: #e8e2ec;
+	--code-title: #29242e;
+	--code-title-border: #51465a;
+	--code-title-text: #c9bdcf;
+	--highlight-line: rgba(118, 81, 168, 0.16);
+	--font-prose: 'Source Serif 4 Variable', Georgia, 'Times New Roman', serif;
+	--font-ui: 'Source Sans 3 Variable', 'Segoe UI', sans-serif;
+	--font-mono: 'Pragmasevka', 'Cascadia Code', Consolas, monospace;
+}
+
+html[data-theme='dark'] {
+	color-scheme: dark;
+	--ink: #eee9f1;
+	--muted: #b6acbb;
+	--paper: #17131b;
+	--line: #403747;
+	--signal: #bd91e8;
+	--signal-dark: #d0adf1;
+	--alert: #f08a70;
+	--callout-note: #78b7ff;
+	--callout-info: #67c5ed;
+	--callout-todo: #91adff;
+	--callout-abstract: #67d4da;
+	--callout-tip: #65d6b5;
+	--callout-important: #c7a5ff;
+	--callout-success: #78d996;
+	--callout-question: #f0bd6a;
+	--callout-warning: #ffbd61;
+	--callout-danger: #ff8f83;
+	--callout-example: #c7adff;
+	--callout-quote: #a7b2ac;
+	--grid: rgba(238, 233, 241, 0.045);
+	--inline-code: #2d2632;
+	--code-border: #56495f;
+	--code-frame: #27212c;
+	--code-bar: #342c3a;
+	--highlight-line: rgba(189, 145, 232, 0.18);
+}
