@@ -1,3 +1,14 @@
+type WriteupVisual =
+	| {
+			type: 'ascii';
+			content: string;
+	  }
+	| {
+			type: 'image';
+			src: string;
+			alt: string;
+	  };
+
 export type WriteupMetadata = {
 	title: string;
 	slug: string;
@@ -9,6 +20,7 @@ export type WriteupMetadata = {
 	solvedAt: string;
 	published: boolean;
 	tags: string[];
+	visual?: WriteupVisual;
 };
 
 const requiredString = (metadata: Record<string, unknown>, key: string, source: string) => {
@@ -24,6 +36,27 @@ const titleCase = (value: string) =>
 		.split('-')
 		.map((word) => `${word.charAt(0).toUpperCase()}${word.slice(1)}`)
 		.join(' ');
+
+const parseVisual = (value: unknown, source: string): WriteupVisual | undefined => {
+	if (value === undefined) return undefined;
+	if (typeof value !== 'object' || value === null || Array.isArray(value)) {
+		throw new Error(`${source}: frontmatter field "visual" must be an object`);
+	}
+
+	const visual = value as Record<string, unknown>;
+	if (visual.type === 'ascii') {
+		return { type: 'ascii', content: requiredString(visual, 'content', `${source}: visual`) };
+	}
+	if (visual.type === 'image') {
+		return {
+			type: 'image',
+			src: requiredString(visual, 'src', `${source}: visual`),
+			alt: requiredString(visual, 'alt', `${source}: visual`)
+		};
+	}
+
+	throw new Error(`${source}: frontmatter field "visual.type" must be "ascii" or "image"`);
+};
 
 export const parseWriteupMetadata = (
 	metadata: Record<string, unknown>,
@@ -54,7 +87,8 @@ export const parseWriteupMetadata = (
 		architecture: typeof metadata.arch === 'string' ? metadata.arch : undefined,
 		solvedAt,
 		published: metadata.published,
-		tags: metadata.tags
+		tags: metadata.tags,
+		visual: parseVisual(metadata.visual, filename)
 	};
 };
 

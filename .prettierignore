@@ -9,5 +9,4 @@ bun.lockb
 /static/
 
 # Authored content
-/Forks And Knives.md
 /src/lib/content/writeups/*.md

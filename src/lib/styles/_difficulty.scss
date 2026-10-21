@@ -1,0 +1,25 @@
+.difficulty-badge[data-difficulty] {
+	--difficulty-color: var(--muted);
+	display: inline-block;
+	padding: 6px 10px;
+	border: 1px solid var(--difficulty-color);
+	color: var(--difficulty-color);
+	background: color-mix(in srgb, var(--difficulty-color) 8%, transparent);
+	font: 0.75rem/1 var(--font-mono);
+	font-weight: 400;
+	white-space: nowrap;
+	text-transform: none;
+
+	&[data-difficulty='easy'] {
+		--difficulty-color: var(--callout-success);
+	}
+	&[data-difficulty='medium'] {
+		--difficulty-color: light-dark(#806000, #e9f364);
+	}
+	&[data-difficulty='hard'] {
+		--difficulty-color: var(--callout-warning);
+	}
+	&[data-difficulty='insane'] {
+		--difficulty-color: var(--callout-danger);
+	}
+}

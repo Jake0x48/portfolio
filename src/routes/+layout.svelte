@@ -54,8 +54,10 @@
 	</a>
 	<div class="header-actions">
 		<nav aria-label="Primary navigation">
+			<a href={resolve('/#work')}>Work</a>
+			<a href={resolve('/#about')}>About</a>
 			<a href={resolve('/writeups')}>Write-ups</a>
-			<a href="https://github.com/Jake0x48" rel="me">GitHub</a>
+			<a href={resolve('/#contact')}>Connect</a>
 		</nav>
 		<button
 			class="theme-toggle"

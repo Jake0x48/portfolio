@@ -8,6 +8,8 @@
 	--muted: #6d6672;
 	--paper: #f5f2f7;
 	--line: #d1cad7;
+	--rule-subtle: color-mix(in srgb, var(--ink) 14%, transparent);
+	--rule-strong: color-mix(in srgb, var(--ink) 30%, transparent);
 	--signal: #7651a8;
 	--signal-dark: #56357e;
 	--alert: #d65d42;

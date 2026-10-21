@@ -27,6 +27,34 @@ describe('parseWriteupMetadata', () => {
 			parseWriteupMetadata({ ...validMetadata, published: undefined }, 'draft.md')
 		).toThrow('frontmatter field "published" must be a boolean');
 	});
+
+	it('parses ASCII and image visuals', () => {
+		expect(
+			parseWriteupMetadata(
+				{ ...validMetadata, visual: { type: 'ascii', content: '< exploit />' } },
+				'ascii.md'
+			).visual
+		).toEqual({ type: 'ascii', content: '< exploit />' });
+
+		expect(
+			parseWriteupMetadata(
+				{
+					...validMetadata,
+					visual: { type: 'image', src: '/images/exploit.png', alt: 'Exploit diagram' }
+				},
+				'image.md'
+			).visual
+		).toEqual({ type: 'image', src: '/images/exploit.png', alt: 'Exploit diagram' });
+	});
+
+	it('rejects incomplete visuals', () => {
+		expect(() =>
+			parseWriteupMetadata(
+				{ ...validMetadata, visual: { type: 'image', src: '/images/exploit.png' } },
+				'image.md'
+			)
+		).toThrow('frontmatter field "alt" must be a non-empty string');
+	});
 });
 
 describe('formatWriteupDate', () => {

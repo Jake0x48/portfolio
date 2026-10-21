@@ -113,7 +113,18 @@
 
 <header class="article-header">
 	<p class="eyebrow">{writeup.platform} · {writeup.category} · {writeup.difficulty}</p>
-	<h1>{writeup.title}</h1>
+	<div class="article-heading">
+		<h1>{writeup.title}</h1>
+		{#if writeup.visual}
+			<figure class:article-ascii={writeup.visual.type === 'ascii'} class="article-visual">
+				{#if writeup.visual.type === 'ascii'}
+					<pre aria-hidden="true">{writeup.visual.content}</pre>
+				{:else}
+					<img src={writeup.visual.src} alt={writeup.visual.alt} fetchpriority="high" />
+				{/if}
+			</figure>
+		{/if}
+	</div>
 	<p class="article-deck">{writeup.summary}</p>
 	<div class="article-byline">
 		<span>Jake Hunter</span>
@@ -142,7 +153,11 @@
 			</div>
 			<div>
 				<dt>Difficulty</dt>
-				<dd>{writeup.difficulty}</dd>
+				<dd>
+					<span class="difficulty-badge" data-difficulty={writeup.difficulty.toLowerCase()}
+						>{writeup.difficulty}</span
+					>
+				</dd>
 			</div>
 			<div>
 				<dt>Status</dt>

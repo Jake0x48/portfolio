@@ -29,6 +29,13 @@ npm run dev
 npm run dev -- --open
 ```
 
+## Error handling
+
+- `src/routes/+error.svelte` renders recoverable route errors, including missing pages and write-ups. Recovery links respect `BASE_PATH`.
+- Client and server error hooks log unexpected failures locally and return safe public messages. No error reporting service is configured.
+- `src/error.html` is a dependency-free fallback when the root layout or error rendering fails.
+- The static adapter already emits `build/404.html`. Configure the host to serve it for unknown paths with HTTP status 404, not redirect to it or return a 200 response. This fallback needs JavaScript to render the branded route error. Server hooks do not run on a static host.
+
 ## Building
 
 To create a production version of your app:

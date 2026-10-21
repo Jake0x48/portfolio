@@ -49,10 +49,20 @@
 	}
 
 	h2 {
+		position: relative;
 		margin: 3em 0 1em;
-		padding-top: 0.8em;
-		border-top: 1px solid var(--ink);
+		padding-top: 1.1em;
 		font-size: 1.75rem;
+
+		&::before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 3rem;
+			height: 2px;
+			background: var(--signal);
+		}
 	}
 
 	> h2:first-of-type {

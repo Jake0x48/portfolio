@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="robots" content="noindex, nofollow" />
+		<title>%sveltekit.status% · Unable to load | Jake Hunter</title>
+		<style>
+			:root {
+				color-scheme: light dark;
+				font-family: system-ui, sans-serif;
+				color: light-dark(#29242e, #eee9f1);
+				background: light-dark(#f5f2f7, #17131b);
+			}
+			body {
+				margin: 0;
+			}
+			main {
+				max-width: 640px;
+				margin: 12vh auto;
+				padding: 28px;
+			}
+			.status {
+				font: 700 1rem monospace;
+			}
+			h1 {
+				font:
+					600 clamp(2.5rem, 7vw, 4rem)/1.1 Georgia,
+					serif;
+			}
+			p {
+				line-height: 1.7;
+			}
+			a {
+				display: inline-block;
+				margin-top: 20px;
+				padding: 14px 20px;
+				color: light-dark(#f5f2f7, #17131b);
+				background: light-dark(#29242e, #eee9f1);
+				text-underline-offset: 4px;
+			}
+			a:focus-visible {
+				outline: 3px solid light-dark(#7651a8, #bd91e8);
+				outline-offset: 5px;
+			}
+		</style>
+	</head>
+	<body>
+		<main>
+			<p class="status">Jake Hunter · Error %sveltekit.status%</p>
+			<h1>Unable to load this page.</h1>
+			<p>
+				Something went wrong before the site could start. Reload this page to try again. If the
+				problem continues, please come back later.
+			</p>
+			<a href="">Reload this page</a>
+		</main>
+	</body>
+</html>

@@ -10,7 +10,8 @@ main {
 	align-items: center;
 	justify-content: space-between;
 	height: 76px;
-	border-bottom: 1px solid var(--ink);
+	border-bottom: 1px solid var(--rule-strong);
+	font-family: var(--font-mono);
 
 	nav {
 		display: flex;
@@ -68,9 +69,10 @@ main {
 	justify-content: space-between;
 	gap: 20px;
 	padding: 30px 0 50px;
-	border-top: 1px solid var(--ink);
+	border-top: 1px solid var(--rule-strong);
 	color: var(--muted);
 	font-size: 0.78rem;
+	font-family: var(--font-mono);
 }
 
 @media (max-width: 760px) {
